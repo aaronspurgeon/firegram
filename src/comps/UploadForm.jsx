@@ -39,11 +39,11 @@ export default function UploadForm({ uploading, setUploading }) {
         if (placeHolder.image && types.includes(placeHolder.image.type)) {
             setFile(placeHolder);
             setError('')
-            setUploading(!uploading)
+            // setUploading(!uploading)
         } else {
             setFile(null);
             setError('Select an image files (png or jpeg)')
-            setUploading(!uploading)
+            // setUploading(!uploading)
         }
         // setFile(placeHolder)
         console.log(placeHolder)
@@ -57,7 +57,7 @@ export default function UploadForm({ uploading, setUploading }) {
         <div style={{ textAlign: 'center' }}>
             <button onClick={handleFormView} >Add a new post</button>
             {uploading && (
-                <motion.form className='form' onSubmit={handleSubmit} >
+                <motion.form className='form' onSubmit={handleSubmit} initial={{ opacity: 0, y: '-100vh' }} animate={{ opacity: 1, y: 0 }} >
                     <input onChange={handleCaption} type="text" name="caption" placeholder='Add a caption' value={placeHolder.caption} />
                     <label>
                         <input type="file" onChange={changeHandler} />
@@ -66,7 +66,7 @@ export default function UploadForm({ uploading, setUploading }) {
                     <div className="output">
                         {error && <div className='error'>{error}</div>}
                         {file && <div className='filename'>{file.name}</div>}
-                        {file && <ProgressBar file={file} setFile={setFile} />}
+                        {file && <ProgressBar file={file} setFile={setFile} setUploading={setUploading} />}
                     </div>
                     <button type='submit'>submit</button>
                     <button onClick={handleFormView}>Cancel</button>
