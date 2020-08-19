@@ -12,10 +12,9 @@ const useStorage = (file) => {
 
   useEffect(() => {
     // ref
-    const storageRef = projectStorage.ref(file.name);
-    const collectionRef = projectFirestore.collection("images");
-    console.log(file);
-
+    // const storageRef = projectStorage.ref(file.name);
+    // const collectionRef = projectFirestore.collection("images");
+    // console.log(file);
     // storageRef.put(file).on(
     //   "state_changed",
     //   (snap) => {
@@ -28,10 +27,37 @@ const useStorage = (file) => {
     //   async () => {
     //     const url = await storageRef.getDownloadURL();
     //     const createdAt = timestamp();
-    //     collectionRef.add({ url, createdAt });
+    //     const caption = file.caption;
+    //     collectionRef.add({ url, createdAt, caption });
     //     setUrl(url);
     //   }
     // );
+    if (file.image) {
+      console.log(file.image.name);
+      const myImage = file.image;
+      const myCaption = file.caption;
+      // ref
+      const storageRef = projectStorage.ref(myImage.name);
+      const collectionRef = projectFirestore.collection("images");
+      console.log(file);
+      storageRef.put(myImage).on(
+        "state_changed",
+        (snap) => {
+          let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
+          setProgress(percentage);
+        },
+        (err) => {
+          setError(err);
+        },
+        async () => {
+          const url = await storageRef.getDownloadURL();
+          const createdAt = timestamp();
+          const caption = myCaption;
+          collectionRef.add({ url, createdAt, caption });
+          setUrl(url);
+        }
+      );
+    }
   }, [file]);
 
   return { progress, url, error };
