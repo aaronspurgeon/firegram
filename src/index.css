@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap");
 
 :root {
-  --primary: #efb6b2;
+  --primary: #ff4e69;
   --secondary: #4e4e4e;
   --error: #ff4a4a;
 }
@@ -12,15 +12,10 @@ body {
   color: var(--secondary);
 }
 .App {
-  max-width: 960px;
+  max-width: 1300px;
   margin: 0 auto;
 }
-.title h1 {
-  color: var(--primary);
-  font-size: 1.2rem;
-  letter-spacing: 2px;
-  font-weight: normal;
-}
+
 .title h2,
 .title p {
   text-align: center;
@@ -124,4 +119,36 @@ label:hover {
   height: 50%;
   background: rgba(0, 0, 0, 0.8);
   border: 1px solid red;
+}
+
+/* nav */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.nav h1 {
+  color: var(--primary);
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  font-weight: normal;
+}
+
+.items {
+  display: flex;
+}
+
+.items button {
+  margin-right: 15px;
+  /* padding: 0 80px; */
+  background-color: var(--primary);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size-adjust: 1.1rem;
+}
+
+.items p {
+  margin-right: 15px;
 }
