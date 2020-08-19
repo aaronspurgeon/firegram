@@ -8,9 +8,15 @@ export default function ImageGrid({ setSelectedImg }) {
     return (
         <div className='img-grid'>
             {docs && docs.map(doc => (
-                <motion.div className='img-wrap' key={doc.id} onClick={() => setSelectedImg(doc.url)} whileHover={{ opacity: 1 }} layout>
-                    <motion.img src={doc.url} alt="firestore things" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }} />
-                </motion.div>
+                <div key={doc.id}>
+                    <motion.div className='img-wrap' onClick={() => setSelectedImg(doc.url)} whileHover={{ opacity: 1 }} layout>
+                        <motion.img src={doc.url} alt="firestore things" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }} />
+
+                    </motion.div>
+                    <div style={{ textAlign: 'center' }}>
+                        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}>{doc.caption}</motion.p>
+                    </div>
+                </div>
             ))}
         </div>
     )

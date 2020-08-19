@@ -11,27 +11,6 @@ const useStorage = (file) => {
   const [url, setUrl] = useState(null);
 
   useEffect(() => {
-    // ref
-    // const storageRef = projectStorage.ref(file.name);
-    // const collectionRef = projectFirestore.collection("images");
-    // console.log(file);
-    // storageRef.put(file).on(
-    //   "state_changed",
-    //   (snap) => {
-    //     let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
-    //     setProgress(percentage);
-    //   },
-    //   (err) => {
-    //     setError(err);
-    //   },
-    //   async () => {
-    //     const url = await storageRef.getDownloadURL();
-    //     const createdAt = timestamp();
-    //     const caption = file.caption;
-    //     collectionRef.add({ url, createdAt, caption });
-    //     setUrl(url);
-    //   }
-    // );
     if (file.image) {
       console.log(file.image.name);
       const myImage = file.image;
