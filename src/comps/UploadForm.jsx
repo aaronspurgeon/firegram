@@ -9,6 +9,19 @@ export default function UploadForm() {
 
 
     const changeHandler = (e) => {
+        // let selected = e.target.files[0];
+
+        // if (selected && types.includes(selected.type)) {
+        //     setFile(selected);
+        //     setError('')
+        // } else {
+        //     setFile(null);
+        //     setError('Select an image files (png or jpeg)')
+        // }
+        console.log('hey')
+    }
+
+    const handleSubmit = (e) => {
         let selected = e.target.files[0];
 
         if (selected && types.includes(selected.type)) {
@@ -21,7 +34,8 @@ export default function UploadForm() {
     }
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
+            <input type="text" name="title" placeholder='Add a title' />
             <label>
                 <input type="file" onChange={changeHandler} />
                 <span>+</span>
@@ -31,6 +45,7 @@ export default function UploadForm() {
                 {file && <div className='filename'>{file.name}</div>}
                 {file && <ProgressBar file={file} setFile={setFile} />}
             </div>
+            <button type='submit'>submit</button>
         </form>
     )
 }
