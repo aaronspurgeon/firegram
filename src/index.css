@@ -74,6 +74,12 @@ label:hover {
 }
 
 /* image grid styles */
+.img-col {
+  display: flex;
+  flex-flow: column wrap;
+  margin: 20px auto;
+  width: 100%;
+}
 .img-grid {
   margin: 20px auto;
   display: grid;
@@ -97,6 +103,29 @@ label:hover {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.img-wrap-col {
+  /* height: 0; */
+  /* padding: 50% 0%; */
+  opacity: 0.8;
+  box-shadow: -2px 44px 76px -46px rgba(0, 0, 0, 0.75);
+}
+
+.img-col img {
+  min-width: 50%;
+  min-height: 50%;
+  max-width: 50%;
+}
+
+.smooth-image {
+  transition: opacity 1s;
+}
+.image-visible {
+  opacity: 1;
+}
+.image-hidden {
+  opacity: 0;
 }
 
 /* modal styles */
