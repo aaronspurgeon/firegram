@@ -34,11 +34,11 @@ export default function ImageGrid({ setSelectedImg, view }) {
                                 <span className="loader" />
                             </div>
                         )}
-
                     </motion.div>
                     <div style={{ textAlign: 'center' }}>
                         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}>{doc.caption}</motion.p>
                     </div>
+
                 </div>
             ))}
         </div>

@@ -13,6 +13,8 @@ export default function UploadForm({ uploading, setUploading, handleFormView }) 
         image: null
     });
 
+    console.log(placeHolder.image)
+
     const types = ['image/png', 'image/jpeg']
 
 
@@ -52,25 +54,35 @@ export default function UploadForm({ uploading, setUploading, handleFormView }) 
 
 
     return (
-        <div style={{ textAlign: 'center' }}>
+        <>
             {uploading && (
-                <motion.form className='form' onSubmit={handleSubmit} initial={{ opacity: 0, y: '-100vh' }} animate={{ opacity: 1, y: 0 }} >
-                    <input onChange={handleCaption} type="text" name="caption" placeholder='Add a caption' value={placeHolder.caption} />
-                    <label>
+                <div className='form-wrap' style={{ textAlign: 'center' }}>
+                    <h3>New Post</h3>
+
+                    <motion.form className='form' onSubmit={handleSubmit} initial={{ opacity: 0, y: '-100vh' }} animate={{ opacity: 1, y: 0 }} >
+                        <div className='preview'>
+                            {placeHolder.image != null ?
+                                <div style={{ display: 'flex', flexFlow: 'column wrap', alignContent: 'center' }}>
+                                    <img src={URL.createObjectURL(placeHolder.image)} alt='preview' />
+                                    <input className='caption' onChange={handleCaption} type="text" name="caption" placeholder='Add a caption' value={placeHolder.caption} />
+                                </div> : <p>Please select an image!</p>}
+                        </div>
+
+
                         <input type="file" onChange={changeHandler} />
-                        <span>+</span>
-                    </label>
-                    <div className="output">
-                        {error && <div className='error'>{error}</div>}
-                        {file && <div className='filename'>{file.name}</div>}
-                        {file && <ProgressBar file={file} setFile={setFile} setUploading={setUploading} />}
-                    </div>
-                    <button type='submit'>submit</button>
-                    <button onClick={handleFormView}>Cancel</button>
-                </motion.form>
+                        <p>Add a file</p>
+
+                        <div className="output">
+                            {error && <div className='error'>{error}</div>}
+                            {file && <div className='filename'>{file.name}</div>}
+                            {file && <ProgressBar file={file} setFile={setFile} setUploading={setUploading} />}
+                        </div>
+                        <button type='submit'>submit</button>
+                        <button onClick={handleFormView}>Cancel</button>
+                    </motion.form>
+                </div >
             )
             }
-        </div >
-
+        </>
     )
 }
