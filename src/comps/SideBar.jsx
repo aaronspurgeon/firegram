@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import img from '../0.jpeg'
 import { BsHouseDoor, BsCompass } from 'react-icons/bs'
 import { HiOutlineHashtag } from 'react-icons/hi'
