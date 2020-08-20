@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ProgressBar from './ProgressBar';
 import { motion } from 'framer-motion'
 
-export default function UploadForm({ uploading, setUploading }) {
+export default function UploadForm({ uploading, setUploading, handleFormView }) {
     const [file, setFile] = useState({
         caption: '',
         image: null
@@ -49,13 +49,10 @@ export default function UploadForm({ uploading, setUploading }) {
         console.log(placeHolder)
     }
 
-    const handleFormView = () => {
-        setUploading(!uploading)
-    }
+
 
     return (
         <div style={{ textAlign: 'center' }}>
-            <button onClick={handleFormView} >Add a new post</button>
             {uploading && (
                 <motion.form className='form' onSubmit={handleSubmit} initial={{ opacity: 0, y: '-100vh' }} animate={{ opacity: 1, y: 0 }} >
                     <input onChange={handleCaption} type="text" name="caption" placeholder='Add a caption' value={placeHolder.caption} />
