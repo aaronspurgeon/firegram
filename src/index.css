@@ -32,6 +32,14 @@ body {
   font-size: 2.6rem;
 }
 
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+  margin: 0 auto;
+}
+
 /* upload form styles */
 form {
   margin: 30px auto 10px;
@@ -76,7 +84,8 @@ label:hover {
 /* image grid styles */
 .img-col {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column;
+  /* align-content: center; */
   margin: 20px auto;
   width: 100%;
 }
@@ -108,14 +117,18 @@ label:hover {
 .img-wrap-col {
   /* height: 0; */
   /* padding: 50% 0%; */
+  margin: 0 auto;
+  width: 25%;
+  position: relative;
   opacity: 0.8;
   box-shadow: -2px 44px 76px -46px rgba(0, 0, 0, 0.75);
 }
 
 .img-col img {
-  min-width: 50%;
-  min-height: 50%;
-  max-width: 50%;
+  /* min-width: 50%;
+  min-height: 50%; */
+  /* max-width: 50%; */
+  width: 100%;
 }
 
 .smooth-image {

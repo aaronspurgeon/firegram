@@ -9,9 +9,14 @@ import SideBar from "./comps/SideBar";
 function App() {
   const [selectedImg, setSelectedImg] = useState(null);
   const [uploading, setUploading] = useState(false);
+  const [view, setView] = useState(true)
 
   const handleFormView = () => {
     setUploading(!uploading)
+  }
+
+  const handleView = () => {
+    setView(!view)
   }
 
   return (
@@ -20,9 +25,9 @@ function App() {
       <div className="App">
         <div>
           <NavBar uploading={uploading} setUploading={setUploading} handleFormView={handleFormView} />
-          <Title />
+          <Title view={view} setView={setView} handleView={handleView} />
           <UploadForm uploading={uploading} setUploading={setUploading} handleFormView={handleFormView} />
-          <ImageGrid setSelectedImg={setSelectedImg} />
+          <ImageGrid setSelectedImg={setSelectedImg} view={view} />
           {selectedImg && (
             <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
           )}
